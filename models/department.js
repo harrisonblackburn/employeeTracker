@@ -21,7 +21,7 @@ const addDepartment = () => {
 
 
   const printDepartment = () => {
-      connection.query('SELECT * FROM department', function (error, results){
+      connection.query('SELECT * FROM department SET ?', function (error, results){
           console.table(results);
       })
 
