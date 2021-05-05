@@ -6,6 +6,10 @@ const connection = require('./connection');
 
 const departments = require('./models/department')
 
+const roles = require('./models/role')
+
+const employees = require('./models/employee')
+
 // function which prompts the user for what action they should take
 const start = () => {
   inquirer
@@ -26,13 +30,13 @@ const start = () => {
         addEmployee();
        
       } else if (answer.userAction === 'View Department') {
-        viewDepartment();
+        printDepartment();
        
       } else if (answer.userAction === 'View Employee Role') {
-        viewRole();
+        printRole();
        
       } else if (answer.userAction === 'View Employee') {
-        viewEmployee();
+        printEmployee();
       } 
         else {
         connection.end();
@@ -53,12 +57,4 @@ connection.connect((err) => {
   
  
   
-// const readProducts = () => {
-//   console.log('Selecting all products...\n');
-//   connection.query('SELECT * FROM products', (err, res) => {
-//     if (err) throw err;
-//     // Log all results of the SELECT statement
-//     console.log(res);
-//     connection.end();
-//   });
-// };
+

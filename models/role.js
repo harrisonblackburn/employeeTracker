@@ -20,10 +20,10 @@ const addRole = () => {
       .prompt({
         name: 'title',
         type: 'input',
-        message: 'What is the title of the role?',
+        message: 'What is the department id of this role?',
         
       })
-      .then((answer) => {
+        .then((answer) => {
          connection.query('INSERT INTO role SET ?', answer, function (error, results, fields) {
             if (error) throw error;
             
@@ -32,3 +32,11 @@ const addRole = () => {
         
       });
   };
+
+  const printRole = () => {
+    connection.query('SELECT * FROM role', function (error, results){
+        console.table(results);
+    })
+
+}
+module.exports = {add: addRole, print: printRole};

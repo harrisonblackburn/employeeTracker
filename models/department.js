@@ -20,10 +20,10 @@ const addDepartment = () => {
   };
 
 
-  const printDepartments = () => {
+  const printDepartment = () => {
       connection.query('SELECT * FROM department', function (error, results){
           console.table(results);
       })
 
   }
-  module.exports = {add: addDepartment, print: printDepartments};
+  module.exports = {add: addDepartment, print: printDepartment};
