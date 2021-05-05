@@ -8,6 +8,20 @@ const addRole = () => {
         type: 'input',
         message: 'What is the title of the role?',
         
+      });
+    inquirer
+      .prompt({
+        name: 'salary',
+        type: 'input',
+        message: 'What is the salary of this role?',
+        
+      });
+    inquirer
+      .prompt({
+        name: 'title',
+        type: 'input',
+        message: 'What is the title of the role?',
+        
       })
       .then((answer) => {
          connection.query('INSERT INTO role SET ?', answer, function (error, results, fields) {

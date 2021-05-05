@@ -16,12 +16,25 @@ const start = () => {
       choices: ['Add Department', 'Add Role', 'Add Employee', 'View Department', 'View Employee Role', 'View Employee'],
     })
     .then((answer) => {
-      // based on their answer, either call the bid or the post functions
+      // based on their answer, call the matching function stored in models
       if (answer.userAction === 'Add Department') {
         addDepartment();
-      } else if (answer.postOrBid === 'Add Role') {
+      } else if (answer.userAction === 'Add Role') {
         addRole();
-      } else {
+      
+      } else if (answer.userAction === 'Add Employee') {
+        addEmployee();
+       
+      } else if (answer.userAction === 'View Department') {
+        viewDepartment();
+       
+      } else if (answer.userAction === 'View Employee Role') {
+        viewRole();
+       
+      } else if (answer.userAction === 'View Employee') {
+        viewEmployee();
+      } 
+        else {
         connection.end();
       }
     });
@@ -33,7 +46,8 @@ const start = () => {
 connection.connect((err) => {
     if (err) throw err;
     // run the start function after the connection is made to prompt the user
-    departments.print();
+    start();
+
   });
   
   
