@@ -51,6 +51,12 @@ connection.connect((err) => {
     if (err) throw err;
     // run the start function after the connection is made to prompt the user
     start();
+    addDepartment();
+    addEmployee(); 
+    addRole(); 
+    printDepartment();
+    printEmployee();
+    printRole();
 
   });
   
