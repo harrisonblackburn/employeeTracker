@@ -2,7 +2,7 @@ const inquirer = require('inquirer');
 const connection = require('../connection');
 
 const addDepartment = () => {
-    inquirer
+  return inquirer
       .prompt({
         name: 'name',
         type: 'input',
@@ -10,10 +10,8 @@ const addDepartment = () => {
         
       })
       .then((answer) => {
-         connection.query('INSERT INTO department SET ?', answer, function (error, results, fields) {
-            if (error) throw error;
+        return connection.queryPromise('INSERT INTO department SET ?', answer) 
             
-          });
        
         
       });
@@ -21,9 +19,12 @@ const addDepartment = () => {
 
 
   const printDepartment = () => {
-      connection.query('SELECT * FROM department SET ?', function (error, results){
-          console.table(results);
-      })
+     return connection.queryPromise('SELECT * FROM department')
+     .then(function (results){
+      console.table(results);
+      return Promise.resolve()
+  })
 
   }
+  
   module.exports = {add: addDepartment, print: printDepartment};

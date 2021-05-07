@@ -2,40 +2,38 @@ const inquirer = require('inquirer');
 const connection = require('../connection');
 
 const addRole = () => {
-    inquirer
-      .prompt({
+   return inquirer
+      .prompt([{
         name: 'title',
         type: 'input',
         message: 'What is the title of the role?',
         
-      });
-    inquirer
-      .prompt({
+      },
+    
+      {
         name: 'salary',
         type: 'input',
         message: 'What is the salary of this role?',
         
-      });
-    inquirer
-      .prompt({
-        name: 'title',
+      },
+    
+      {
+        name: 'department_id',
         type: 'input',
         message: 'What is the department id of this role?',
         
-      })
+      }])
         .then((answer) => {
-         connection.query('INSERT INTO role SET ?', answer, function (error, results, fields) {
-            if (error) throw error;
-            
-          });
-       
-        
-      });
+          console.log(answer);
+        return connection.queryPromise('INSERT INTO role SET ?', answer) 
+       });
   };
 
   const printRole = () => {
-    connection.query('SELECT * FROM role', function (error, results){
+   return connection.queryPromise('INSERT INTO roleSELECT * FROM role')
+    .then((results) => {
         console.table(results);
+        return Promise.resolve()
     })
 
 }
