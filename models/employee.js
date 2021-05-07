@@ -2,8 +2,8 @@ const inquirer = require('inquirer');
 const connection = require('../connection');
 
 const addEmployee = () => {
-    inquirer
-      .prompt({
+ return  inquirer
+      .prompt([{
         name: 'first_name',
         type: 'input',
         message: 'What is the first name of the employee you would like to add?',
@@ -29,24 +29,24 @@ const addEmployee = () => {
         type: 'input',
         message: 'What is the manager id of the manager for this employee?',
         
-      })
+      }])
 
-
-.then((answer) => {
-         connection.query('INSERT INTO employee SET ?', answer, function (error, results, fields) {
-            if (error) throw error;
-            
-          });
+      .then((answer) => {
+        console.log(answer);
+      return connection.queryPromise('INSERT INTO role SET ?', answer) 
+     });
        
         
-      });
+      
   };
 
 
   const printEmployee = () => {
-      connection.query('SELECT * FROM employee', function (error, results){
-          console.table(results);
-      })
+    return connection.queryPromise('SELECT * FROM employee')
+    .then((results) => {
+        console.table(results);
+        return Promise.resolve()
+    })
 
-  }
+}
   module.exports = {add: addEmployee, print: printEmployee};

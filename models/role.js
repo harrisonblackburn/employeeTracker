@@ -30,7 +30,7 @@ const addRole = () => {
   };
 
   const printRole = () => {
-   return connection.queryPromise('INSERT INTO roleSELECT * FROM role')
+   return connection.queryPromise('SELECT * FROM role')
     .then((results) => {
         console.table(results);
         return Promise.resolve()
