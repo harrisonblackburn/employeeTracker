@@ -1,4 +1,4 @@
-WALKTHROUGH VIDEO: chrome-extension://mmeijimgabbpbgpdklnllpncmdofkcpn/app.html#/files/6c250750-f56e-4a7b-yad0-3735b70ea3c2
+WALKTHROUGH VIDEO: https://drive.google.com/file/d/1LNXJO9DkjoRLnIaFyaXBThebEYLRKfx1/view
 
 
 
